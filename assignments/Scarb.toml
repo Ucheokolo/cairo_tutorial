@@ -6,3 +6,5 @@ version = "0.1.0"
 
 [dependencies]
 # foo = { path = "vendor/foo" }
+[dependencies]
+alexandria = { git = "https://github.com/keep-starknet-strange/alexandria.git" }
