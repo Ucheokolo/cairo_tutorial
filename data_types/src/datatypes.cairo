@@ -71,6 +71,12 @@ fn main() {
     b.print();
     c.print();
 
+    // we can also declare tuple with values and types
+
+    let (a, b): (u32, u32) = (6, 24);
+    a.print();
+    b.print();
+
 
 
 
