@@ -137,3 +137,6 @@ fn enum_array() {
     // let bioprint = biodata.span();
     
 }     
+
+// Pending issues
+// How do i print custom arrays?
