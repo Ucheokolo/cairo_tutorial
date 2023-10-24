@@ -9,6 +9,7 @@ fn main() {
     at_method();
     // arr_data_type();
     get_method();
+    get_met(4);
     
 
 }
@@ -19,6 +20,11 @@ fn first_arr() {
     a.append(1);
     a.append(2);
 
+    let mut y = ArrayTrait::new();
+    y.append(4);
+    y.append(5);
+    y.append(0);
+
     // lets pop an item from "first_arr"
     let first_pop = a.pop_front().unwrap();
     a.append(first_pop);
@@ -27,6 +33,9 @@ fn first_arr() {
     first_pop.print(); // this should return the popped item from the array.
     'second print'.print();
     a.print();
+    'new print'.print();
+    let cut = *y.at(1);
+    cut.print();
 }
 
 fn arr_data_type() {
@@ -95,6 +104,26 @@ fn get_method() -> u128 {
         }
     }
 
+}
+
+fn get_met(_input: u32) -> u64 {
+    let mut get_arr = ArrayTrait::<u64>::new();
+    get_arr.append(2);
+    get_arr.append(3);
+    get_arr.append(4);
+    let ind_to_get = _input;
+
+    match get_arr.get(ind_to_get) {
+        Option::Some(x) => {
+            *x.unbox()
+        },
+
+        Option::None(_) => {
+            let mut returnData = ArrayTrait::new();
+            returnData.append('out of bound');
+            panic(returnData)
+        }
+    }
 }
 
 #[generate_trait]

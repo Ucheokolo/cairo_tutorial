@@ -1,5 +1,5 @@
 use debug::PrintTrait;
-use debug::Felt252DictTrait;
+// use debug::Felt252DictTrait;
 use nullable::{nullable_from_box, match_nullable, FromNullableResult};
 
 fn main() {
@@ -28,14 +28,14 @@ fn dict() {
 
 }
 
-fn dict_trait() {
-    let mut d: FeltDict<Nullable<span<felt252>>> = Default::default(); //Figiure out why the Felt252Trait isn't working
+// fn dict_trait() {
+//     let mut d: FeltDict<Nullable<span<felt252>>> = Default::default(); //Figiure out why the Felt252Trait isn't working
 
-    let mut a = ArrayTrait::new();
-    a.append(8);
-    a.append(9);
-    a.append(10);
+//     let mut a = ArrayTrait::new();
+//     a.append(8);
+//     a.append(9);
+//     a.append(10);
 
-    // Insert it as a `Span`
-    d.insert(0, nullable_from_box(BoxTrait::new(a.span())));
-}
+//     // Insert it as a `Span`
+//     d.insert(0, nullable_from_box(BoxTrait::new(a.span())));
+// }
