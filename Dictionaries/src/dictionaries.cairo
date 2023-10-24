@@ -4,6 +4,8 @@ use nullable::{nullable_from_box, match_nullable, FromNullableResult};
 
 fn main() {
     dict();
+    dictMutable();
+    dict_2(108, 7, 9);
 }
 
 fn dict() {
@@ -26,6 +28,37 @@ fn dict() {
 
     balances.get('Kenny').print();
 
+}
+
+fn dict_2(_firstScore: u32, _secondScore: u32, _thirdScore: u32) {
+    let mut points: Felt252Dict<u32> = Default::default();
+    points.insert('Nono', _firstScore);
+    points.insert('Kenny', _secondScore);
+    points.insert('Uche', _thirdScore);
+
+
+    let Nono_point = points.get('Nono');
+    assert(Nono_point < 100, 'greater than 100');
+
+    'Nono scores'.print();
+    Nono_point.print();
+
+}
+
+fn dictMutable() {
+    let mut scores: Felt252Dict<u32> = Default::default();
+    scores.insert('Tboy', 26);
+    scores.insert('sbox', 3);
+    scores.insert('tender', 40);
+
+    let _sbox = scores.get('sbox');
+    _sbox.print();
+    assert(_sbox == 3, 'Number is 35');
+
+    scores.insert('sbox', 3 + _sbox);
+    let _sbox2 = scores.get('sbox');
+    _sbox2.print();
+    assert(_sbox2 == 3, 'Number is now 6');
 }
 
 // fn dict_trait() {
