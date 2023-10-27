@@ -4,12 +4,13 @@ use clone::Clone;
 use array::ArrayTCloneImpl;
 
 fn main() {
+    let mut first_array = ArrayTrait::<u128>::new();
     ownership_with_arr();
     A {};
     B {dict: Default::default()};
     array_data();
     return_value();
-    multi_return()
+    multi_return(first_array);
 }
 
 fn simpledata_type() {
@@ -101,7 +102,7 @@ fn return_args(pointer: point) -> point{
 
 fn multi_return(arr: Array<u128>) -> (Array<u128>, usize) {
     let length = arr.len();
-    (arr, length);
+    return(arr, length);
 }
 
 // I've tried this for testnet and works for me

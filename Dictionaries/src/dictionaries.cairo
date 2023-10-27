@@ -1,6 +1,6 @@
 use debug::PrintTrait;
-// use debug::Felt252DictTrait;
-use nullable::{nullable_from_box, match_nullable, FromNullableResult};
+// use dict::Felt252DictEntryTrait;
+// use nullable::{nullable_from_box, match_nullable, FromNullableResult};
 
 fn main() {
     dict();
@@ -53,6 +53,12 @@ fn dictMutable() {
 
     let _sbox = scores.get('sbox');
     _sbox.print();
+
+    // none existent objects when called in a dictionary does not return an error, instead, it returns an empty object.
+    // it is also imorportant to note that objects can't be deleted from a dictionary, however, they can be updated and this happens by changign the storage.
+    let inexistentUser = scores.get('Uche');
+    'Print non existent user'.print();
+    inexistentUser.print();
     assert(_sbox == 3, 'Number is 35');
 
     scores.insert('sbox', 3 + _sbox);
