@@ -1,19 +1,23 @@
 use debug::PrintTrait;
-// use dict::Felt252DictEntryTrait;
+use dict::Felt252DictTrait;
+use dict::Felt252DictEntryTrait;
 // use nullable::{nullable_from_box, match_nullable, FromNullableResult};
 
 fn main() {
-    dict();
+    _dict();
     dictMutable();
     dict_2(108, 7, 9);
 }
 
-fn dict() {
+
+
+fn _dict() {
     let mut balances: Felt252Dict<u64> = Default::default();
 
     balances.insert('Alex', 4);
     balances.insert('Uche', 500);
     balances.insert('Kenny', 8);
+    // balances.entry('uche');
 
     let alex_bal = balances.get('Alex');
     assert(alex_bal < 120, 'Balance is not 120');
@@ -67,14 +71,50 @@ fn dictMutable() {
     assert(_sbox2 == 3, 'Number is now 6');
 }
 
-// fn dict_trait() {
-//     let mut d: FeltDict<Nullable<span<felt252>>> = Default::default(); //Figiure out why the Felt252Trait isn't working
+fn _pdict(_owner: felt252, _subject: felt252, _score: felt252 ) {
 
-//     let mut a = ArrayTrait::new();
-//     a.append(8);
-//     a.append(9);
-//     a.append(10);
+    let mut _classRecords = ArrayTrait::<dict_arr>::new();
+    let data = dict_arr{owner: _owner, subject: _subject, score: _score};
+    _classRecords.append(data);
 
-//     // Insert it as a `Span`
-//     d.insert(0, nullable_from_box(BoxTrait::new(a.span())));
-// }
+    let rec1 = *_classRecords.at(0);
+
+
+    // rec1.boundary();
+
+}
+
+#[derive(Copy, Drop)]
+struct dict_arr{
+    owner: felt252,
+    subject: felt252,
+    score: felt252
+}
+
+#[generate_trait]
+impl Arry_imp of array_imp_Trait {
+    fn boundary(self: Array<u128>){
+        let mut i: usize = 0;
+        loop {
+            if i > self.len(){
+                break;
+            }
+        
+
+        match self.get(i) {
+            Option::Some(x) => {
+                let res = *x.unbox();
+                res.print();
+            },
+            Option::None(_) => {
+                let mut data = ArrayTrait::new();
+                data.append('Run Finished');
+                panic(data)
+            }
+        }
+        i +=1;
+        }
+    }
+}
+
+// The main difference between Drop<T> and destruct<T> is the Drop as a no-op operation, meaning meaning it does not generate new CASM while Destruct<T> does not have this restriction. the only type that uses the Destruct<T> trait is the Felt252Dict<T>. 

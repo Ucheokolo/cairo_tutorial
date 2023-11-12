@@ -23,9 +23,11 @@ fn return_values_from_loop() {
         if counter == 4 {
             break counter *2;
         }
+        
         counter += 1;
     };
     'The result is '.print();
     result.print();
+    'stop print'.print();
 }
 
